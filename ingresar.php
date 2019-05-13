@@ -23,6 +23,12 @@
 
     $usuario= $_POST['usuario'];
     $passw = $_POST['contrasena'];
+    //$entrar = $_POST['entrar'];
+    //$registro = $_POST['registro'];
+
+    if (isset($_POST['registro'])) {
+      echo '<script type="text/javascript"> window.open("index.html","_self");</script>';
+    }
 
     /*echo "USUARIO:";
     echo $usuario;
