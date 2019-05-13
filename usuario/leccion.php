@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Módulo 1 - AEI</title>
+	<title>Leccion - AEI</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Unica University Template">
 	<meta name="keywords" content="event, unica, creative, html">
@@ -47,10 +47,11 @@
 		$disabled = "";
 
 		if (isset($_POST['completado'])) {
-			$sql_update = "UPDATE Lecciones SET \"Completado\" = 'completado' WHERE idl = $idl-1 AND idmod = $modulo";
+			//$sql_update = "UPDATE Lecciones SET \"Completado\" = 'completado', usuario = '$usuario' WHERE idl = $idl-1 AND idmod = $modulo";
+			$sql_update = "INSERT INTO Completado (usuario, idl, idmod, completado) VALUES('$usuario', $idl-1, $modulo, 'completado')";
 			$result_update = pg_query($dbconn, $sql_update);
 			if (!$result_update) {
-				echo "Ocurrió un error con query (leccion.php, update).\n";
+				echo "Ocurrió un error con query (leccion.php, insert).\n";
 				exit;
 			}
 		}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Módulo 1 - AEI</title>
+	<title>Módulo - AEI</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Unica University Template">
 	<meta name="keywords" content="event, unica, creative, html">
@@ -114,15 +114,18 @@
 
 			if ($tipo === 'V') {
 		?>
-				<img src='../img/services-icons/video.png' class='imgRedonda'/>
+				<i class="fa fa-video-camera" style="font-size:48px;color:#428DFF"></i>
+				<!--<img src='../img/services-icons/video.png' class='imgRedonda'/>-->
 		<?php
 			}else if ($tipo === 'E') {
 		?>
-				<img src='../img/services-icons/lapiz.png' class='imgRedonda'/>
+			<i class="fa fa-pencil" style="font-size:48px;color:#428DFF"></i>
+			<!--	<img src='../img/services-icons/lapiz.png' class='imgRedonda'/>-->
 		<?php
 			}else if($tipo === 'L'){
 		?>
-				<img src='../img/services-icons/libro.png' class='imgRedonda'/>
+			<i class="fa fa-book" style="font-size:48px;color:#428DFF"></i>
+			<!--	<img src='../img/services-icons/libro.png' class='imgRedonda'/> -->
 		<?php
 			}
 		?>

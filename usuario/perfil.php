@@ -11,6 +11,8 @@
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -18,7 +20,9 @@
 	<link rel="stylesheet" href="../css/themify-icons.css"/>
 	<link rel="stylesheet" href="../css/owl.carousel.css"/>
 	<link rel="stylesheet" href="../css/style.css"/>
+	<link rel="stylesheet" href="../css/estilos.scss"/>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -95,12 +99,15 @@
 		?>
 		<p><?php echo $nombre ?></p>
 	</div>
-
-
+	<!--
+	########################################################### LINEA DE TIEMPO ############################################################################
+-->
 			<center>
 				<img src='../img/services-icons/usuario.png' class='imgRedondaBig'/>
 			</center>
-
+	<!--
+	########################################################################################################################################################
+	-->
 <br>
 <br>
 
@@ -146,6 +153,7 @@
 
 
 	<!--====== Javascripts & Jquery ======-->
+	<script src="../js/timeline.js"></script>
 	<script src="../js/jquery-3.2.1.min.js"></script>
 	<script src="../js/owl.carousel.min.js"></script>
 	<script src="../js/jquery.countdown.js"></script>
