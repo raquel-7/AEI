@@ -1,0 +1,48 @@
+{
+    "Usuario":{
+        "usuario": "varchar(20)",
+        "nombre": "varchar(50)",
+        "contrasena": "varchar(20)",
+        "primary_keys":["usuario"]
+    },
+    "Modulo":{
+        "idmod": "serial",
+        "titulo": "varchar(100)",
+        "descripcion": "varchar(100)",
+        "imagen": "text",
+        "primary_keys":["idmod"]
+    },
+    "Lecciones":{
+        "idl": "serial",
+        "titulo": "varchar(100)",
+        "idmod": "int",
+        "contenido": "text",
+        "primary_keys":["idl"],
+        "foreign_keys":{"idmod":"Modulo"}
+    },
+    "Material":{
+        "idm": "serial",
+        "tipo": "varchar(1)",
+        "url": "varchar(100)",
+        "secuencia": "serial",
+        "idl": "int",
+        "primary_keys":["idm"],
+        "foreign_keys":{"idl":"Lecciones"}
+    },
+    "Escritura":{
+        "usuario": "varchar(20)",
+        "idl": "int",
+        "idmod": "int",
+        "comentario": "text",
+        "primary_keys":["usuario","idl"],
+        "foreign_keys":{"usuario":"Usuario","idl":"Lecciones","idmod":"Modulo"}
+    },
+    "Completado":{
+        "usuario": "varchar(20)",
+        "idl": "int",
+        "idmod": "int",
+        "completado": "varchar(20)",
+        "primary_keys":["usuario", "idl", "idmod"],
+        "foreign_keys":{"usuario":"Usuario","idl":"Lecciones","idmod":"Modulo"}
+    }
+}
