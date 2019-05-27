@@ -99,7 +99,7 @@
     <body>
         modificar
         <?php
-            include 'funciones.php';
+            include 'header.php';
                 updateForm($_GET);
 
 

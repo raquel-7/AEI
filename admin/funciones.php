@@ -32,11 +32,13 @@ function menuVerTablas(){
 function opcionesTabla($table){
     echo "<h3>$table</h3>";
     echo "
-    <a href=insertarForm.php?tabla=$table>Insertar $table</a>
+    <p><button class='w3-button w3-round-xlarge' style= 'color: #f6783a'><a href=insertarForm.php?tabla=$table>Insertar $table</a></button></p>
+      <p><button class='w3-button  w3-round-xlarge'>  <a href=verTabla.php?tabla=$table>Ver $table</a></button></p>
 
-    <a href=verTabla.php?tabla=$table>Ver $table</a>
 
-    <button style='position: absolute' class='site-btn' style='color: #000'><a class =regresar href=index.php>Menu Principal</a></button>";
+
+
+    <p><button  class='w3-button  w3-round-xlarge' style='color: #000'><a class =regresar href=index.php>Menu Principal</a></button></p>";
 }
 
 function getSchemaJSON(){
@@ -142,12 +144,14 @@ function displayTable($table){
             echo "\t\t<td>".$row[$key]."</td>\n";
         }
         if (isUsed($table, $row)){
-            echo "\t\t<td>No se puede eliminar</td>\n";
+            echo "\t\t<td><img src='img/services-icons/cancel.png' alt='Eliminar' height='30px' width='30px' title='No se puede eliminar'>\n";
+              echo "\t\t<a class=modificar href=". modificarURL($row, $schema) ."&tabla=$table><img src='img/services-icons/edit.png' alt='Modificar' height='30px' width='30px' title='Modificar'></a></td>\n";
         }
         else{
-            echo "\t\t<td><a class=eliminar href=". eliminarURL($row, $schema) ."&tabla=$table>Eliminar</a></td>\n";
+            echo "\t\t<td><a class=eliminar href=". eliminarURL($row, $schema) ."&tabla=$table><img src='img/services-icons/delete.png' alt='Eliminar' height='30px' width='30px' title='Eliminar'></a>\n";
+              echo "\t\t<a class=modificar href=". modificarURL($row, $schema) ."&tabla=$table><img src='img/services-icons/edit.png' alt='Modificar' height='30px' width='30px'title='Modificar' ></a></td>\n";
         }
-        echo "\t\t<td><a class=modificar href=". modificarURL($row, $schema) ."&tabla=$table>Modificar</a></td>\n";
+
         echo "\t</tr>\n";
     }
     echo "</table>";
@@ -320,7 +324,8 @@ function modificarURL($row, $schema){
     return rtrim($url, "& ");
 }
 function topTable($schema){
-    echo "<table border=1>
+    echo "<table border=1 style='border-collapse: collapse;
+  width: 70%;'>
     <tr>";
     foreach ($schema as $key => $type) {
         if ($key === 'primary_keys' or $key === 'foreign_keys'){
@@ -328,7 +333,8 @@ function topTable($schema){
         }
         echo "<th><b>". $key . "</b></th>";
     }
-    echo "</tr>";
+    echo "<th><b>Acciones</b></th></tr>";
+
 }
 
 function getComboDescriptor($column,$descriptorC,$table,$name, $selected){
