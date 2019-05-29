@@ -274,8 +274,8 @@ El Instituto Regional de Capacitación de Alfabetización (IRCA) son capacitacio
 						<ul>
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="sobre.html">Acerca de</a></li>
-							<li><a href="course.html">Curso</a></li>
-							<li><a href="contact.html">Contacto</a></li>
+							<li><a href="registro.html">Registro</a></li>
+							<li><a href="contacto.html">Contacto</a></li>
 						</ul>
 					</div>
 				</div>
