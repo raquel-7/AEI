@@ -70,8 +70,10 @@
 	<nav class="nav-section">
 		<div class="container">
 			<ul class="main-menu">
-				<li><a href="perfil.php">Home</a></li>
+				<li><a href="perfil.php">Inicio</a></li>
 				<li class="active"><a href="../modulos.php">Curso</a></li>
+				<li><a href="faq.php">Preguntas</a></li>
+				<li><a href="material.php">Material y Libros</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -122,10 +124,14 @@
 			<i class="fa fa-pencil" style="font-size:48px;color:#428DFF"></i>
 			<!--	<img src='../img/services-icons/lapiz.png' class='imgRedonda'/>-->
 		<?php
-			}else if($tipo === 'L'){
+			}else if($tipo === 'I'){
 		?>
-			<i class="fa fa-book" style="font-size:48px;color:#428DFF"></i>
+			<i class="fa fa-image" style="font-size:48px;color:#428DFF"></i>
 			<!--	<img src='../img/services-icons/libro.png' class='imgRedonda'/> -->
+		<?php
+			}else if($tipo == 'Q'){
+		?>
+			<i class="fa fa-graduation-cap" style="font-size:48px;color:#428DFF"></i>
 		<?php
 			}
 		?>

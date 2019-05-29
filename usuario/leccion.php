@@ -46,18 +46,9 @@
 
 		$disabled = "";
 
-		if (isset($_POST['completado'])) {
-			//$sql_update = "UPDATE Lecciones SET \"Completado\" = 'completado', usuario = '$usuario' WHERE idl = $idl-1 AND idmod = $modulo";
-			$sql_update = "INSERT INTO Completado (usuario, idl, idmod, completado) VALUES('$usuario', $idl-1, $modulo, 'completado')";
-			$result_update = pg_query($dbconn, $sql_update);
-			if (!$result_update) {
-				echo "Ocurrió un error con query (leccion.php, insert).\n";
-				exit;
-			}
-		}
-
 	?>
-	<!-- Page Preloder -->
+
+	<!-- Page Preloder-->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -85,8 +76,10 @@
 	<nav class="nav-section">
 		<div class="container">
 			<ul class="main-menu">
-				<li><a href="perfil.php">Home</a></li>
+				<li><a href="perfil.php">Inicio</a></li>
 				<li class="active"><a href="../modulos.php">Curso</a></li>
+				<li><a href="faq.php">Preguntas</a></li>
+				<li><a href="material.php">Material y Libros</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -113,6 +106,15 @@
 		$secuencia_material = $row1['secuencia'];
 		$url_material = $row1['url'];
 	?>
+
+	<!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+		<div class="container">
+			<a href="moduloUsuario.php?modulo=<?php echo $modulo; ?>"><i class="fa fa-home"></i> Modulo</a> <i class="fa fa-angle-right"></i>
+			<span>Leccion</span>
+		</div>
+	</div>
+	<!-- Breadcrumb section end -->
 
 	<!-- Blog page section  -->
 	<div class="section-title text-center">
@@ -141,6 +143,7 @@
 								echo $contenido_leccion;
 							?>
 						</p>
+						<br>
 
 						<?php
 							if ($tipo_material === 'V') {
@@ -185,27 +188,33 @@
 						?>
 
 						<?php
-							}
+						}else if($tipo_material == 'I'){
+						?>
+								<img src=<?php echo $url_material?> alt="">
+						<?php
+						}else if($tipo_material == 'Q'){
+								echo $url_material;
+						}
 						?>
 
 					</div>
 
 					<?php
-						$sql_siguiente = "SELECT * FROM Lecciones	WHERE idmod = $modulo AND idl = $idl+1";
-						$result_siguiente = pg_query($dbconn, $sql_siguiente);
-						if (!$result_siguiente) {
-							echo "Ocurrió un error con query (leccion.php, siguiente).\n";
-							exit;
-						}
+					$sql_select = "SELECT * FROM Completado WHERE usuario = '$usuario' AND idl = $idl AND idmod = $modulo AND completado = 'completado'";
+					$result_select = pg_query($dbconn, $sql_select);
+					if (!$result_select) {
+						echo "Ocurrió un error con query (leccion.php, insert).\n";
+						exit;
+					}
 
-						$num_rows_siguiente = pg_num_rows($result_siguiente);
-						if ($num_rows_siguiente != 0) {
-					?>
-						<form class="newsletter" action= "leccion.php?modulo=<?php echo $modulo;?>&idl=<?php echo $idl+1; ?>" method="post">
-								<input type="submit" name="completado" value="Siguiente Lección" class="site-btn" <?php echo $disabled;?>>
+					$select_num_rows = pg_num_rows($result_select);
+					if ($select_num_rows == 0) {
+						?>
+						<form class="newsletter" action= "completado.php?idl=<?php echo $idl; ?>&idmod=<?php echo $modulo; ?>" method="post">
+								<input type="submit" name="completado" value="Completado" class="site-btn" <?php echo $disabled;?>>
 						</form>
 					<?php
-						}
+					}
 					?>
 
 			</div>

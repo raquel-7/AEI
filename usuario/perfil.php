@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../css/owl.carousel.css"/>
 	<link rel="stylesheet" href="../css/style.css"/>
 	<link rel="stylesheet" href="../css/estilos.scss"/>
+	<link rel="stylesheet" href="../css/estilos.min.css"/>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 
@@ -76,6 +77,8 @@
 			<ul class="main-menu">
 				<li class="active"><a href="perfil.php">Inicio</a></li>
 				<li><a href="../modulos.php">Curso</a></li>
+				<li><a href="faq.php">Preguntas</a></li>
+				<li><a href="material.php">Material y Libros</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -102,9 +105,42 @@
 	<!--
 	########################################################### LINEA DE TIEMPO ############################################################################
 -->
+
+	<?php
+		$sql_completado = "SELECT * FROM completado WHERE usuario = '$usuario'";
+		$result_completado = pg_query($dbconn, $sql_completado);
+		if (!$result_completado) {
+			echo "Ocurrió un error con query (Archivo: perfil.php, completados).\n";
+			exit;
+		}
+
+		$sql_lecciones = "SELECT * FROM lecciones";
+		$result_lecciones = pg_query($dbconn, $sql_lecciones);
+		if (!$result_lecciones) {
+			echo "Ocurrió un error con query (Archivo: perfil.php, lecciones).\n";
+			exit;
+		}
+
+		$sum_lecciones = 0;
+		$sum_completadas = 0;
+
+		while($row_c = pg_fetch_array($result_completado)){
+
+			$sum_completadas = $sum_completadas + 1;
+		}
+
+		while($row_l = pg_fetch_array($result_lecciones)){
+
+			$sum_lecciones = $sum_lecciones + 1;
+		}
+
+	?>
+
+
 			<center>
 				<img src='../img/services-icons/usuario.png' class='imgRedondaBig'/>
 			</center>
+
 	<!--
 	########################################################################################################################################################
 	-->
