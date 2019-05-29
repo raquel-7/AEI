@@ -27,7 +27,7 @@
     //$registro = $_POST['registro'];
 
     if (isset($_POST['registro'])) {
-      echo '<script type="text/javascript"> window.open("index.html","_self");</script>';
+      echo '<script type="text/javascript"> window.open("index.php","_self");</script>';
     }
 
     /*echo "USUARIO:";
@@ -57,7 +57,7 @@
          #echo $usuario;
        }else{
            echo "invalid UserName or Password";
-           echo '<script type="text/javascript"> window.open("index.html","_self");</script>';
+           echo '<script type="text/javascript"> window.open("index.php","_self");</script>';
        }
 
      ?>
