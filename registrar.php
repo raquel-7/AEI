@@ -31,16 +31,13 @@
     session_start();
 
     //include "../sesiones.php";
-    $host="localhost";
+		$host="localhost";
     $user="postgres";
-    $pass="123abc";
-    $dbname="aei";
-    $port = "5432";
-    $cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$pass";
-    $conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
+    $pass="123456";
+    $dbname="postgres";
+    $dbconn = pg_connect("host=$host dbname=$dbname user=$user password=$pass");
 
-
-    if (!$conexion) {
+    if (!$dbconn) {
       echo "Ocurrió un error con la conexion .\n";
       exit;
     }
@@ -48,7 +45,6 @@
     $usuario = $_POST['usuario'];
     //$email = $_POST['email'];
     $passw = $_POST['contrasena'];
-
     $validateEmail = "SELECT * FROM usuario WHERE usuario='$usuario'";
     $emailcheckindb = pg_query($dbconn, $validateEmail);
 
@@ -61,14 +57,13 @@
          echo '<script type="text/javascript"> window.open("inicio.php","_self");</script>';
     }else{
 
-      $query = "INSERT INTO usuario ( usuario, nombre, contrasena) VALUES ( '$usuario','$nombre', '$passw') ";
-    
-      $send = pg_query($conexion, $query);
+      $query = "INSERT INTO usuario (nombre, usuario, contrasena) VALUES ('$nombre', '$usuario' ,'$passw') ";
+      $send = pg_query($dbconn, $query);
       if(!$send){
         echo "Error al enviar campos";
       }else {
         echo "Registrado!";
-          echo '<script type="text/javascript"> window.open("index.php","_self");</script>';
+          echo '<script type="text/javascript"> window.open("index.html","_self");</script>';
       }
     }
      ?>

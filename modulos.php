@@ -69,8 +69,10 @@
 	<nav class="nav-section">
 		<div class="container">
 			<ul class="main-menu">
-				<li><a href="usuario/perfil.php">Home</a></li>
+				<li><a href="usuario/perfil.php">Inicio</a></li>
 				<li class="active"><a href="modulos.php">Curso</a></li>
+				<li><a href="usuario/faq.php">Preguntas</a></li>
+				<li><a href="usuario/material.php">Material y Libros</a></li>
 			</ul>
 		</div>
 	</nav>
